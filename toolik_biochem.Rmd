@@ -40,3 +40,15 @@ for (i in seq_along(inlet_biochem)) {
 print(mean_biochem)
 ```
 
+### Mean using pipes
+
+```{r}
+inlet_biochem |> summarize(across(where(is.numeric), mean, na.rm = TRUE))
+```
+
+### Mean values with apply() function
+
+```{r}
+apply(X= inlet_biochem, MARGIN = 2, FUN = mean, na.rm = TRUE)
+```
+

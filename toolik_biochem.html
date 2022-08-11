@@ -456,6 +456,20 @@ for (i in seq_along(inlet_biochem)) {
 }
 print(mean_biochem)</code></pre>
 <pre><code>## [1]   7.063182 409.961538  13.365385</code></pre>
+<div id="mean-using-pipes" class="section level3">
+<h3>Mean using pipes</h3>
+<pre class="r"><code>inlet_biochem |&gt; summarize(across(where(is.numeric), mean, na.rm = TRUE))</code></pre>
+<pre><code>## # A tibble: 1 × 3
+##     p_h doc_u_m tdn_u_m
+##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1  7.06    410.    13.4</code></pre>
+</div>
+<div id="mean-values-with-apply-function" class="section level3">
+<h3>Mean values with apply() function</h3>
+<pre class="r"><code>apply(X= inlet_biochem, MARGIN = 2, FUN = mean, na.rm = TRUE)</code></pre>
+<pre><code>##        p_h    doc_u_m    tdn_u_m 
+##   7.063182 409.961538  13.365385</code></pre>
+</div>
 
 
 
